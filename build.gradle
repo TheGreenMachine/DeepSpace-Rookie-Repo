@@ -5,6 +5,9 @@ plugins {
     id "jaci.openrio.gradle.GradleRIO" version "2018.01.22"
 }
 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
 def TEAM = 1816
 def ROBOT_CLASS = "frc.team1816.robot.Robot"
 

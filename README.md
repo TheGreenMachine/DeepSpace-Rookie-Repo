@@ -8,4 +8,5 @@
 
 
 # Alpha #1
-###### If you think Beta is better than you are Andrew
+###### If you think Beta is better then you are Andrew.
+###### 👌🏼

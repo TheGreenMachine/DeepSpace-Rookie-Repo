@@ -1,14 +1,15 @@
 /.gradle/
-.iws
-.iml
-.ipr
+*.iws
+**/*.iml
+.idea/
+*.ipr
 /.classpath
 /.project
 /.settings/
 /build/
 /bin/
 
-./.gradle
+.gradle
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -22,12 +23,32 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 
-# User Specific Stuff
-.idea/
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+
+*.iml
 
 # Why should I need to add this?
-.class
+*.class
 
 # Log Files
 .csv
+
 

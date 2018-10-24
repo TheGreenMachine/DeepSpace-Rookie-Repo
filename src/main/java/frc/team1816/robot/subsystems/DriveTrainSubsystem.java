@@ -26,6 +26,8 @@ public class DriveTrainSubsystem extends Subsystem {
         this.rightTalon1.setInverted(true);
         this.rightTalon2.setInverted(true);
 
+
+
         }
         public void setDriveTrain(double leftpower, double rightpower) {
             this.leftpower = leftpower;

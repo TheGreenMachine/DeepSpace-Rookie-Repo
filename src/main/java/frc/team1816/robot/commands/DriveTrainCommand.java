@@ -68,7 +68,6 @@ public class DriveTrainCommand extends Command {
 
     }
 
-
     /**
      * <p>
      * Called when the command ends because somebody called {@link #cancel()} or

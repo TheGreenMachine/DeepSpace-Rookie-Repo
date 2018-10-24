@@ -1,12 +1,14 @@
 package frc.team1816.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.team1816.robot.Robot;
 
 
-public class ExampleCommand extends Command {
-    public ExampleCommand() {
+public class DriveTrainCommand extends Command {
+    public DriveTrainCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+
     }
 
 
@@ -14,7 +16,7 @@ public class ExampleCommand extends Command {
      * The initialize method is called just before the first time
      * this Command is run after being started.
      */
-    @Override
+//    @Override
     protected void initialize() {
 
     }
@@ -24,14 +26,8 @@ public class ExampleCommand extends Command {
      * The execute method is called repeatedly when this Command is
      * scheduled to run until this Command either finishes or is canceled.
      */
-    @Override
+//    @Override
     protected void execute() {
-
-
-
-
-
-
 
 
     }
@@ -54,7 +50,7 @@ public class ExampleCommand extends Command {
      * @return whether this command is finished.
      * @see Command#isTimedOut() isTimedOut()
      */
-    @Override
+  //  @Override
     protected boolean isFinished() {
         // TODO: Make this return true when this Command no longer needs to run execute()
         return false;
@@ -67,7 +63,7 @@ public class ExampleCommand extends Command {
      * wrap up loose ends, like shutting off a motor that was being used in the
      * command.
      */
-    @Override
+    // @Override
     protected void end() {
 
     }
@@ -87,7 +83,7 @@ public class ExampleCommand extends Command {
      * method, as done here.
      * </p>
      */
-    @Override
+ //   @Override
     protected void interrupted() {
         super.interrupted();
     }

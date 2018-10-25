@@ -28,6 +28,6 @@ public class XboxGamepad {
         buttonSelect = new JoystickButton(joystick, 6);
         buttonStart = new JoystickButton(joystick, 7);
 
-        //TODO: Implement dPad and triggers
+        //TODO: Implement dPad(UP/DOWN - axis 7, RIGHT/LEFT - axis 6) and triggers (LT - axis 9, RT - axis 10)
     }
 }

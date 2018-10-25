@@ -9,7 +9,6 @@ import frc.team1816.robot.subsystems.Drivetrain;
 public class Robot extends TimedRobot {
 
     private Drivetrain drivetrain;
-    private Gamepad gamepadDriver;
 
     @Override
     public void robotInit() {
@@ -19,7 +18,6 @@ public class Robot extends TimedRobot {
         Controls.getInstance();
 
         drivetrain = Components.getInstance().drivetrain;
-        gamepadDriver = Controls.getInstance().gamepadDriver;
     }
 
     @Override
@@ -30,7 +28,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopInit() {
-        drivetrain.setDefaultCommand(new GamepadDriveCommand(gamepadDriver));
+        drivetrain.setDefaultCommand(new GamepadDriveCommand());
     }
 
     @Override

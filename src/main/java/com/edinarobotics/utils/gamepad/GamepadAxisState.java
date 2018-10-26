@@ -35,9 +35,7 @@ public class GamepadAxisState {
      * @return The Vector2 representing the state of the gamepad's right
      * joystick.
      */
-    public Vector2 getRightJoystick(){
-        return right;
-    }
+    public Vector2 getRightJoystick(){ return right; }
     
     /**
      * Returns the current magnitude of the Vector2 representing the state of 

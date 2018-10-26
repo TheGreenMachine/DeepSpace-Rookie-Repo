@@ -16,8 +16,10 @@ public class FilteredXboxGamepad extends XboxGamepad{
     public XboxGamepadAxisState getXboxGamepadAxisState() {
         double leftx = super.getLeftX();
         double lefty = super.getLeftY();
+        double leftT = super.getLT();
         double rightx = super.getRightX();
         double righty = super.getRightY();
+        double rightT = super.getRT();
         Vector2 left = new Vector2(leftx, lefty);
         Vector2 right = new Vector2(rightx, righty);
         XboxGamepadAxisState state = new XboxGamepadAxisState(left, right);

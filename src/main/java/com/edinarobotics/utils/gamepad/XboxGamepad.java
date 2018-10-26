@@ -213,9 +213,9 @@ public class XboxGamepad {
      */
     public double getRightY(){ return -xboxController.getRawAxis(5); }
 
-    public double getRightTrigger(){ return xboxController.getRawAxis(3); }
+    public double getRT(){ return xboxController.getRawAxis(3); }
 
-    public double getLeftTrigger() { return xboxController.getRawAxis(2);}
+    public double getLT() { return xboxController.getRawAxis(2);}
 
     /**
      * Returns the state of the left xboxController as a Vector2.

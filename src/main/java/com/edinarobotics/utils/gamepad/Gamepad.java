@@ -2,7 +2,6 @@ package com.edinarobotics.utils.gamepad;
 
 import com.edinarobotics.utils.gamepad.buttons.DPadButton;
 import com.edinarobotics.utils.math.Vector2;
-
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.Joystick;
@@ -23,14 +22,18 @@ public class Gamepad {
 
 		leftBumper = new JoystickButton(joystick, 5);
 		rightBumper = new JoystickButton(joystick, 6);
+
         leftTrigger = new JoystickButton(joystick, 7);
         rightTrigger = new JoystickButton(joystick, 8);
+
         diamondLeft = new JoystickButton(joystick, 1);
         diamondDown = new JoystickButton(joystick, 2);
         diamondRight = new JoystickButton(joystick, 3);
         diamondUp = new JoystickButton(joystick, 4);
+
         middleLeft = new JoystickButton(joystick, 9);
         middleRight = new JoystickButton(joystick, 10);
+
         leftJoystickButton = new JoystickButton(joystick, 11);
         rightJoystickButton = new JoystickButton(joystick, 12);
 		

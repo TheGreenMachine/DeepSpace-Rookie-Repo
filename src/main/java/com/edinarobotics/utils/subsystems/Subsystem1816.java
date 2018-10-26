@@ -1,6 +1,5 @@
 package com.edinarobotics.utils.subsystems;
 
-import com.edinarobotics.utils.commands.MaintainStateCommand;
 import com.edinarobotics.utils.common.Updatable;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -9,6 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * {@link #update()} method.
  */
 public abstract class Subsystem1816 extends Subsystem implements Updatable {
+
     
     /**
      * Constructs a new Subsystem1816 with no given name.

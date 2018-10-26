@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.Joystick;
 
 
-public class Gamepad {
+public class Gamepad  {
 	
 	private Joystick joystick;
 	private Button leftBumper, rightBumper;

@@ -1,33 +1,58 @@
 package frc.team1816.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import frc.team1816.robot.subsystems.ExampleSubsystem;
 
 public class Robot extends TimedRobot {
-    @Override
-    public void robotInit() { }
+
+    ExampleSubsystem ex = new ExampleSubsystem();
 
     @Override
-    public void disabledInit() { }
+    public void robotInit() {
+        ex.initDefaultCommand();
+        System.out.println("Initialized...");
+
+    }
 
     @Override
-    public void autonomousInit() { }
+    public void disabledInit() {
+
+    }
 
     @Override
-    public void teleopInit() { }
+    public void autonomousInit() {
+
+    }
 
     @Override
-    public void testInit() { }
+    public void teleopInit() {
+
+    }
+
+    @Override
+    public void testInit() {
+
+    }
 
 
     @Override
-    public void disabledPeriodic() { }
+    public void disabledPeriodic() {
+
+    }
     
     @Override
-    public void autonomousPeriodic() { }
+    public void autonomousPeriodic() {
+
+    }
 
     @Override
-    public void teleopPeriodic() { }
+    public void teleopPeriodic() {
+        System.out.println("Teleop");
+        Components.getInstance().move();
+    }
 
     @Override
-    public void testPeriodic() { }
+    public void testPeriodic() {
+
+    }
 }

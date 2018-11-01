@@ -1,15 +1,14 @@
 package com.edinarobotics.utils.gamepad.buttons;
 
 import com.edinarobotics.utils.gamepad.Gamepad;
-import com.edinarobotics.utils.gamepad.GamepadBase;
 import edu.wpi.first.wpilibj.buttons.Button;
 
-public class DPadButton extends Button {
+public class DPadButtonLegacy extends Button {
 
-	private final GamepadBase gamepad;
+	private final Gamepad gamepad;
 	private final DPadButtonType buttonType;
 
-	public DPadButton(GamepadBase gamepad, DPadButtonType buttonType) {
+	public DPadButtonLegacy(Gamepad gamepad, DPadButtonType buttonType) {
 		this.gamepad = gamepad;
 		this.buttonType = buttonType;
 	}

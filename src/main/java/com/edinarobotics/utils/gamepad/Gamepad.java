@@ -1,27 +1,27 @@
 package com.edinarobotics.utils.gamepad;
 
-import com.edinarobotics.utils.gamepad.buttons.DPadButton;
+import com.edinarobotics.utils.gamepad.buttons.DPadButtonLegacy;
 import com.edinarobotics.utils.math.Vector2;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.Joystick;
 
-
+@Deprecated
 public class Gamepad {
-	
-	private Joystick joystick;
-	private Button leftBumper, rightBumper;
-	private Button leftTrigger, rightTrigger;
+
+    private Joystick joystick;
+    private Button leftBumper, rightBumper;
+    private Button leftTrigger, rightTrigger;
     private Button diamondLeft, diamondDown, diamondRight, diamondUp;
     private Button middleLeft, middleRight;
     private Button leftJoystickButton, rightJoystickButton;
     private Button dPadLeft, dPadDown, dPadRight, dPadUp;
-	
-	public Gamepad(int port) {
-		joystick = new Joystick(port);
 
-		leftBumper = new JoystickButton(joystick, 5);
-		rightBumper = new JoystickButton(joystick, 6);
+    public Gamepad(int port) {
+        joystick = new Joystick(port);
+
+        leftBumper = new JoystickButton(joystick, 5);
+        rightBumper = new JoystickButton(joystick, 6);
 
         leftTrigger = new JoystickButton(joystick, 7);
         rightTrigger = new JoystickButton(joystick, 8);
@@ -36,15 +36,15 @@ public class Gamepad {
 
         leftJoystickButton = new JoystickButton(joystick, 11);
         rightJoystickButton = new JoystickButton(joystick, 12);
-		
-        dPadLeft = new DPadButton(this, DPadButton.DPadButtonType.LEFT);
-        dPadRight = new DPadButton(this, DPadButton.DPadButtonType.RIGHT);
-        dPadUp = new DPadButton(this, DPadButton.DPadButtonType.UP);
-        dPadDown = new DPadButton(this, DPadButton.DPadButtonType.DOWN);
 
-	} 
-	
-	/**
+        dPadLeft = new DPadButtonLegacy(this, DPadButtonLegacy.DPadButtonType.LEFT);
+        dPadRight = new DPadButtonLegacy(this, DPadButtonLegacy.DPadButtonType.RIGHT);
+        dPadUp = new DPadButtonLegacy(this, DPadButtonLegacy.DPadButtonType.UP);
+        dPadDown = new DPadButtonLegacy(this, DPadButtonLegacy.DPadButtonType.DOWN);
+
+    }
+
+    /**
      * Returns a Button object representing the left bumper of the gamepad. <br/>
      * The bumper is the button that is on the front face of the gamepad
      * above the trigger.
@@ -53,7 +53,7 @@ public class Gamepad {
     public Button leftBumper(){
         return leftBumper;
     }
-    
+
     /**
      * Returns a Button object representing the right bumper of the gamepad. <br/>
      * The bumper is the button that is on the front face of the gamepad
@@ -63,7 +63,7 @@ public class Gamepad {
     public Button rightBumper(){
         return rightBumper;
     }
-    
+
     /**
      * Returns a Button object representing the left trigger of the gamepad. <br/>
      * The trigger is the larger button on the bottom of the front face of
@@ -73,7 +73,7 @@ public class Gamepad {
     public Button leftTrigger(){
         return leftTrigger;
     }
-    
+
     /**
      * Returns a Button object representing the right trigger of the gamepad. <br/>
      * The trigger is the larger button on the bottom of the front face of
@@ -83,7 +83,7 @@ public class Gamepad {
     public Button rightTrigger(){
         return rightTrigger;
     }
-    
+
     /**
      * Returns a Button object for the left button in the diamond group of
      * buttons on the gamepad. <br/>
@@ -94,7 +94,7 @@ public class Gamepad {
     public Button diamondLeft(){
         return diamondLeft;
     }
-    
+
     /**
      * Returns a Button object for the down button in the diamond group of
      * buttons on the gamepad. <br/>
@@ -105,7 +105,7 @@ public class Gamepad {
     public Button diamondDown(){
         return diamondDown;
     }
-    
+
     /**
      * Returns a Button object for the right button in the diamond group of
      * buttons on the gamepad. <br/>
@@ -116,7 +116,7 @@ public class Gamepad {
     public Button diamondRight(){
         return diamondRight;
     }
-    
+
     /**
      * Returns a Button object for the up button in the diamond group of
      * buttons on the gamepad. <br/>
@@ -127,7 +127,7 @@ public class Gamepad {
     public Button diamondUp(){
         return diamondUp;
     }
-    
+
     /**
      * Returns a Button object for the left button in the center of the gamepad. <br/>
      * This button is often labeled "back."
@@ -136,7 +136,7 @@ public class Gamepad {
     public Button middleLeft(){
         return middleLeft;
     }
-    
+
     /**
      * Returns a Button object for the right button in the center of the gamepad. <br/>
      * This button is often labeled "start."
@@ -145,7 +145,7 @@ public class Gamepad {
     public Button middleRight(){
         return middleRight;
     }
-    
+
     /**
      * Returns a Button object representing a press of the left joystick. <br/>
      * This button is bound to the left joystick being pressed straight down.
@@ -154,7 +154,7 @@ public class Gamepad {
     public Button leftJoystickButton(){
         return leftJoystickButton;
     }
-    
+
     /**
      * Returns a Button object representing a press of the right joystick. <br/>
      * This button is bound to the right joystick being pressed straight down.
@@ -163,7 +163,7 @@ public class Gamepad {
     public Button rightJoystickButton(){
         return rightJoystickButton;
     }
-    
+
     /**
      * Returns a Button object representing the d-pad being pressed left.
      * @return A Button object representing the d-pad being pressed left.
@@ -171,7 +171,7 @@ public class Gamepad {
     public Button dPadLeft(){
         return dPadLeft;
     }
-    
+
     /**
      * Returns a Button object representing the d-pad being pressed down.
      * @return A Button object representing the d-pad being pressed down.
@@ -179,7 +179,7 @@ public class Gamepad {
     public Button dPadDown(){
         return dPadDown;
     }
-    
+
     /**
      * Returns a Button object representing the d-pad being pressed right.
      * @return A Button object representing the d-pad being pressed right.
@@ -187,7 +187,7 @@ public class Gamepad {
     public Button dPadRight(){
         return dPadRight;
     }
-    
+
     /**
      * Returns a Button object representing the d-pad being pressed up.
      * @return A Button object representing the d-pad being pressed up.
@@ -195,7 +195,7 @@ public class Gamepad {
     public Button dPadUp(){
         return dPadUp;
     }
-    
+
     /**
      * Returns the current value of the x-axis of the left joystick. <br/>
      * A value of {@code -1} indicates that the joystick is fully left.<br/>
@@ -205,7 +205,7 @@ public class Gamepad {
     public double getLeftX(){
         return joystick.getRawAxis(0);
     }
-    
+
     /**
      * Returns the current value of the y-axis of the left joystick. <br/>
      * A value of {@code -1} indicates that the joystick is fully down.<br/>
@@ -215,7 +215,7 @@ public class Gamepad {
     public double getLeftY(){
         return -joystick.getRawAxis(1);
     }
-    
+
     /**
      * Returns the current value of the x-axis of the right joystick. <br/>
      * A value of {@code -1} indicates that the joystick is fully left.<br/>
@@ -225,7 +225,7 @@ public class Gamepad {
     public double getRightX(){
         return joystick.getRawAxis(2);
     }
-    
+
     /**
      * Returns the current value of the y-axis of the right joystick. <br/>
      * A value of {@code -1} indicates that the joystick is fully down.<br/>
@@ -235,7 +235,7 @@ public class Gamepad {
     public double getRightY(){
         return -joystick.getRawAxis(3);
     }
-    
+
     /**
      * Returns the state of the left joystick as a Vector2.
      * This vector 2 contains the state of the x- and y- axis of the joystick.
@@ -244,7 +244,7 @@ public class Gamepad {
     public Vector2 getLeftJoystick(){
         return new Vector2(getLeftX(), getLeftY());
     }
-    
+
     /**
      * Returns the state of the right joystick as a Vector2.
      * This vector 2 contains the state of the x- and y- axis of the joystick.
@@ -253,7 +253,7 @@ public class Gamepad {
     public Vector2 getRightJoystick(){
         return new Vector2(getRightX(), getRightY());
     }
-    
+
     /**
      * Returns the state of the gamepad's joysticks together in a
      * GamepadAxisState.
@@ -266,28 +266,28 @@ public class Gamepad {
         return new GamepadAxisState(left, right);
     }
 
-	public int getDPadY() {
-		int povValue = joystick.getPOV();
-		
-		if (povValue == 0 || povValue == 45 || povValue == 315){
-			return 1;
-		} else if (povValue == 90 || povValue == 270 || povValue == -1){
-			return 0;
-		} else {
-			return -1;
-		}
-	}
-	
-	public int getDPadX() {
-		int povValue = joystick.getPOV();
-		
-		if (povValue == 0 || povValue == 180 || povValue == -1){
-			return 0;
-		} else if (povValue == 270 || povValue == 315 || povValue == 225){
-			return -1;
-		} else {
-			return 1;
-		}
-	}
+    public int getDPadY() {
+        int povValue = joystick.getPOV();
+
+        if (povValue == 0 || povValue == 45 || povValue == 315){
+            return 1;
+        } else if (povValue == 90 || povValue == 270 || povValue == -1){
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+
+    public int getDPadX() {
+        int povValue = joystick.getPOV();
+
+        if (povValue == 0 || povValue == 180 || povValue == -1){
+            return 0;
+        } else if (povValue == 270 || povValue == 315 || povValue == 225){
+            return -1;
+        } else {
+            return 1;
+        }
+    }
 
 }

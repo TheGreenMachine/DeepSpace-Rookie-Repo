@@ -2,16 +2,33 @@ package com.edinarobotics.utils.gamepad;
 
 import com.edinarobotics.utils.math.Vector2;
 
-public class XboxGamepadAxisState {
-    private Vector2 left, right;
-    public XboxGamepadAxisState(Vector2 left, Vector2 right){
-        this.left = left;
-        this.right = right;
+public class XboxGamepadAxisState extends GamepadAxisState {
+    private double leftTrigger, rightTrigger;
+
+    public XboxGamepadAxisState(
+            Vector2 left, Vector2 right,
+            double leftTrigger, double rightTrigger
+    ) {
+        super(left, right);
+        this.leftTrigger = leftTrigger;
+        this.rightTrigger = rightTrigger;
     }
-    public Vector2 getLeftJoystick() { return left; }
-    public Vector2 getRightJoystick() { return right; }
-    public double getLeftMagnitude() { return getLeftJoystick().magnitude();}
-    public double getRightMagnitude() { return getRightJoystick().magnitude();}
-    public double getLeftDirection() { return Math.toDegrees(Math.atan2(left.getX(), left.getY())); }
-    public double getRightDirection() { return Math.toDegrees(Math.atan2(right.getX(), right.getY())); }
+
+    /**
+     * Returns the raw axis value of the left analog trigger.
+     * @return The degree to which the left analog trigger is depressed
+     *         in the range [0.0, 1.0], where 0.0 represents the neutral state
+     */
+    public double getLeftTrigger() {
+        return leftTrigger;
+    }
+
+    /**
+     * Returns the raw axis value of the right analog trigger.
+     * @return The degree to which the right analog trigger is depressed
+     *         in the range [0.0, 1.0], where 0.0 represents the neutral state
+     */
+    public double getRightTrigger() {
+        return rightTrigger;
+    }
 }

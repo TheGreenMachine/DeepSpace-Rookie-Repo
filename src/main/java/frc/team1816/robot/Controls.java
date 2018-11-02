@@ -1,15 +1,13 @@
 package frc.team1816.robot;
 
-import com.edinarobotics.utils.gamepad.FilteredXboxGamepad;
 import com.edinarobotics.utils.gamepad.XboxGamepad;
-import com.edinarobotics.utils.gamepad.gamepadfilters.XboxDeadzoneFilter;
-import com.edinarobotics.utils.gamepad.gamepadfilters.XboxPowerFilter;
-import com.edinarobotics.utils.gamepad.gamepadfilters.XboxGamepadFilter;
-import com.edinarobotics.utils.gamepad.gamepadfilters.XboxGamepadFilterSet;
+import com.edinarobotics.utils.gamepad.gamepadfilters.DeadzoneFilter;
+import com.edinarobotics.utils.gamepad.gamepadfilters.GamepadFilter;
+import com.edinarobotics.utils.gamepad.gamepadfilters.GamepadFilterSet;
+import com.edinarobotics.utils.gamepad.gamepadfilters.PowerFilter;
 
-
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Controls {
     private static Controls instance;
@@ -17,15 +15,13 @@ public class Controls {
     public XboxGamepad xboxGamepadDriver;
 
     private Controls() {
-        List<XboxGamepadFilter> xboxGamepadFilters =  new ArrayList<>();
-        xboxGamepadFilters.add(new XboxDeadzoneFilter(0.05));
-        xboxGamepadFilters.add(new XboxPowerFilter(2));
-        XboxGamepadFilterSet xboxGamepadDriverFilterSet = new XboxGamepadFilterSet((xboxGamepadFilters));
-
-        xboxGamepadDriver = new FilteredXboxGamepad(0, xboxGamepadDriverFilterSet);
+        xboxGamepadDriver = new XboxGamepad(0);
+        GamepadFilterSet filterSet = xboxGamepadDriver.filtered.getFilters();
+        filterSet.add(new DeadzoneFilter(0.05));
+        filterSet.add(new PowerFilter(2));
     }
 
-    public static Controls getInstance(){
+    public static Controls getInstance() {
         if (instance == null){
             instance = new Controls();
         }

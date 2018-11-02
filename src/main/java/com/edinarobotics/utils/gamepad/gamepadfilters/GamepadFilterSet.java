@@ -1,13 +1,14 @@
 package com.edinarobotics.utils.gamepad.gamepadfilters;
 
-import java.util.List;
-
 import com.edinarobotics.utils.gamepad.GamepadAxisState;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
  * This class applies multiple other GamepadFilters to a Gamepad.
  */
-public class GamepadFilterSet implements GamepadFilter{
+public class GamepadFilterSet implements GamepadFilter {
     private List<GamepadFilter> filters;
     
     /**
@@ -17,6 +18,26 @@ public class GamepadFilterSet implements GamepadFilter{
      */
     public GamepadFilterSet(List<GamepadFilter> filters){
         this.filters = filters;
+    }
+
+    /**
+     * Appends a new <code>GamepadFilter</code> to the list of filters that
+     * will be applied to the gamepad.
+     * @param filter The {@link GamepadFilter} to be added to the list of filters.
+     * @return <code>true</code> (as specified by {@link List#add})
+     */
+    public boolean add(GamepadFilter filter) {
+        return filters.add(filter);
+    }
+
+    /**
+     * Appends many <code>GamepadFilter</code>s to the list of filters that
+     * will be applied to the gamepad.
+     * @param filter A {@link Collection} of {@link GamepadFilter}s to be added to the list of filters.
+     * @return <code>true</code> (as specified by {@link List#add})
+     */
+    public boolean addAll(Collection<GamepadFilter> filter) {
+        return filters.addAll(filter);
     }
     
     /**

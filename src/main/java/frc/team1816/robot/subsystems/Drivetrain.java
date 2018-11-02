@@ -16,6 +16,7 @@ public class Drivetrain extends Subsystem{
         this.tmRight = new TalonSRX(tmRight);
         this.tfRight1 = new TalonSRX(tfRight1);
 
+        this.tmRight.setInverted(true);
         this.tmLeft.set(ControlMode.Follower, tfLeft1);
         this.tmRight.set(ControlMode.Follower, tfRight1);
     }

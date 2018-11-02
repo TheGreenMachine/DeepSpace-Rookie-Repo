@@ -9,8 +9,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class F310Gamepad extends GamepadBase {
 
     public F310Gamepad(int port) {
-        super();
-        inputDevice = new Joystick(port);
+        super(new Joystick(port));
 
         leftBumper = new JoystickButton(inputDevice, 5);
         rightBumper = new JoystickButton(inputDevice, 6);

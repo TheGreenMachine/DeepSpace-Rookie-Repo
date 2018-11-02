@@ -23,8 +23,7 @@ public class XboxGamepad extends GamepadBase {
      * RT axis - 10th
      */
     public XboxGamepad(int port) {
-        super();
-        inputDevice = new XboxController(port);
+        super(new XboxController(port));
 
         leftBumper = new JoystickButton(inputDevice, 4);
         rightBumper = new JoystickButton(inputDevice, 5);

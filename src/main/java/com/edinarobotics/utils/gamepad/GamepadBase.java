@@ -20,7 +20,8 @@ public abstract class GamepadBase {
     protected Button dPadLeft, dPadDown, dPadRight, dPadUp;
     protected Button leftTrigger, rightTrigger;
 
-    protected GamepadBase() {
+    protected GamepadBase(GenericHID inputDevice) {
+        this.inputDevice = inputDevice;
         dPadLeft = new DPadButton(this, DPadButton.DPadButtonType.LEFT);
         dPadRight = new DPadButton(this, DPadButton.DPadButtonType.RIGHT);
         dPadUp = new DPadButton(this, DPadButton.DPadButtonType.UP);

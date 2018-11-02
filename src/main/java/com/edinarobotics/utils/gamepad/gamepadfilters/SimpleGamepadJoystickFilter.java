@@ -52,7 +52,7 @@ public abstract class SimpleGamepadJoystickFilter implements JoystickFilter, Gam
      * in order to produce the new filtered values. This function must be
      * overridden by SimpleGamepadJoystickFilter subclasses to produce a full
      * filter.
-     * @param value The value of the axis.
+     * @param toFilter The value of the axis.
      * @return The filtered value of the axis.
      */
     protected abstract double applyFilter(double toFilter);

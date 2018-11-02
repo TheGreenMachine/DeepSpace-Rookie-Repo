@@ -1,16 +1,18 @@
 package frc.team1816.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import frc.team1816.robot.subsystems.ExampleSubsystem;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import frc.team1816.robot.commands.DriveCommand;
+import frc.team1816.robot.subsystems.Drivetrain;
 
 public class Robot extends TimedRobot {
 
-    ExampleSubsystem ex = new ExampleSubsystem();
+    Drivetrain drivetrain;
+
 
     @Override
     public void robotInit() {
-        ex.initDefaultCommand();
-        System.out.println("Initialized...");
+        Components.getInstance();
 
     }
 
@@ -26,7 +28,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopInit() {
-
+        drivetrain.setDefaultCommand(new DriveCommand());
     }
 
     @Override
@@ -48,7 +50,8 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         System.out.println("Teleop");
-        Components.getInstance().move();
+        Scheduler.getInstance().run();
+
     }
 
     @Override

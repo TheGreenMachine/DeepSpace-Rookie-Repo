@@ -3,107 +3,114 @@ package com.edinarobotics.utils.gamepad;
 import com.edinarobotics.utils.gamepad.gamepadfilters.GamepadFilterSet;
 import com.edinarobotics.utils.math.Vector2;
 
-/**
- * Implements a Gamepad that filters all of its joystick axis values through
- * a given GamepadFilterSet.
- */
-public class FilteredGamepad extends Gamepad {
+public class FilteredGamepad implements TwoJoystickSet {
+    private final GamepadBase gamepad;
     private GamepadFilterSet filters;
-    
-    /**
-     * Constructs a new FilteredGamepad that will send the axis results
-     * of the gamepad on the given port through the given GamepadFilterSet.
-     * @param port The port of the gamepad that is to be wrapped by this
-     * FilteredGamepad.
-     * @param filterSet The GamepadFilterSet through which all joystick
-     * values are to be sent.
-     */
-    public FilteredGamepad(int port, GamepadFilterSet filterSet){
-        super(port);
-        this.filters = filterSet;
+
+    public FilteredGamepad(GamepadBase gamepad, GamepadFilterSet filters) {
+        this.gamepad = gamepad;
+        this.filters = filters;
     }
-    
+
+    public FilteredGamepad(GamepadBase gamepad) {
+        this(gamepad, new GamepadFilterSet());
+    }
+
     /**
-     * Returns the state of the left joystick as a Vector2.
-     * This vector 2 contains the state of the x- and y- axis of the joystick.
-     * @return A Vector2 representing the state of the left joystick after
-     * being filtered by the given GamepadFilterSet.
+     * Returns the state of the gamepad's inputDevices together in a
+     * GamepadAxisState with all filters contained in the FilterSet applied.
+     *
+     * @return An filtered GamepadAxisState object containing the states of all
+     * the inputDevice axes on this Gamepad.
      */
-    public Vector2 getLeftJoystick(){
+    @Override
+    public GamepadAxisState getGamepadAxisState() {
+        return filters.filter(gamepad.getGamepadAxisState());
+    }
+
+    @Override
+    public Vector2 getLeftJoystick() {
         return getGamepadAxisState().getLeftJoystick();
     }
-    
-    /**
-     * Returns the state of the right joystick as a Vector2.
-     * This vector 2 contains the state of the x- and y- axis of the joystick.
-     * @return A Vector2 representing the state of the right joystick after
-     * being filtered by the given GamepadFilterSet.
-     */
-    public Vector2 getRightJoystick(){
+
+    @Override
+    public Vector2 getRightJoystick() {
         return getGamepadAxisState().getRightJoystick();
     }
-    
-    /**
-     * Returns the state of the gamepad's joysticks together in a
-     * GamepadAxisState. The values in this object have been filtered
-     * by the given GamepadFilterSet.
-     * @return A GamepadAxisState object containing the states of all the
-     * joystick axes on this Gamepad.
-     */
-    public GamepadAxisState getGamepadAxisState(){
-        //This method recomputes values so we avoid infinite loops
-        //in FilteredGamepad.
-        double leftx = super.getLeftX();
-        double lefty = super.getLeftY();
-        double rightx = super.getRightX();
-        double righty = super.getRightY();
-        Vector2 left = new Vector2(leftx, lefty);
-        Vector2 right = new Vector2(rightx, righty);
-        GamepadAxisState state = new GamepadAxisState(left, right);
-        return filters.filter(state);
-    }
-    
+
     /**
      * Returns the current value of the x-axis of the left joystick. <br/>
      * A value of {@code -1} indicates that the joystick is fully left.<br/>
      * A value of {@code 1} indicates that the joystick is fully right.
+     *
      * @return The current value of the x-axis of the left joystick after
      * being sent through the given GamepadFilterSet.
      */
-    public double getLeftX(){
+    @Override
+    public double getLeftX() {
         return getLeftJoystick().getX();
     }
-    
+
     /**
      * Returns the current value of the y-axis of the left joystick. <br/>
      * A value of {@code -1} indicates that the joystick is fully down.<br/>
      * A value of {@code 1} indicates that the joystick is fully up.
+     *
      * @return The current value of the y-axis of the left joystick after
      * being sent through the given GamepadFilterSet.
      */
-    public double getLeftY(){
+    @Override
+    public double getLeftY() {
         return getLeftJoystick().getY();
     }
-    
+
     /**
      * Returns the current value of the x-axis of the right joystick. <br/>
      * A value of {@code -1} indicates that the joystick is fully left.<br/>
      * A value of {@code 1} indicates that the joystick is fully right.
+     *
      * @return The current value of the x-axis of the right joystick after
      * being sent through the given GamepadFilterSet.
      */
-    public double getRightX(){
+    @Override
+    public double getRightX() {
         return getRightJoystick().getX();
     }
-    
+
     /**
      * Returns the current value of the y-axis of the right joystick. <br/>
      * A value of {@code -1} indicates that the joystick is fully down.<br/>
      * A value of {@code 1} indicates that the joystick is fully up.
+     *
      * @return The current value of the y-axis of the right joystick after
      * being sent through the given GamepadFilterSet.
      */
-    public double getRightY(){
+    @Override
+    public double getRightY() {
         return getRightJoystick().getY();
+    }
+
+    public double getLT() throws Exception {
+        if (getGamepadAxisState() instanceof XboxGamepadAxisState) {
+            XboxGamepadAxisState xboxGamepadAxisState = (XboxGamepadAxisState) getGamepadAxisState();
+            return xboxGamepadAxisState.getLeftTrigger();
+        }
+        throw new Exception("Gamepad does not support analog triggers!");
+    }
+
+    public double getRT() throws Exception {
+        if (getGamepadAxisState() instanceof XboxGamepadAxisState) {
+            XboxGamepadAxisState xboxGamepadAxisState = (XboxGamepadAxisState) getGamepadAxisState();
+            return xboxGamepadAxisState.getRightTrigger();
+        }
+        throw new Exception("Gamepad does not support analog triggers!");
+    }
+
+    public GamepadFilterSet getFilters() {
+        return filters;
+    }
+
+    public void setFilters(GamepadFilterSet filters) {
+        this.filters = filters;
     }
 }

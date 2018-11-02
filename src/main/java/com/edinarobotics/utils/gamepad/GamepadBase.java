@@ -1,6 +1,7 @@
 package com.edinarobotics.utils.gamepad;
 
 import com.edinarobotics.utils.gamepad.buttons.DPadButton;
+import com.edinarobotics.utils.gamepad.gamepadfilters.GamepadFilterSet;
 import com.edinarobotics.utils.math.Vector2;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -11,7 +12,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
  *
  * @since 2018-11-1
  */
-public abstract class GamepadBase {
+public abstract class GamepadBase implements TwoJoystickSet {
     protected GenericHID inputDevice;
     protected Button leftBumper, rightBumper;
     protected Button buttonA, buttonB, buttonX, buttonY;
@@ -20,49 +21,28 @@ public abstract class GamepadBase {
     protected Button dPadLeft, dPadDown, dPadRight, dPadUp;
     protected Button leftTrigger, rightTrigger;
 
+    public final FilteredGamepad filtered;
+
     protected GamepadBase(GenericHID inputDevice) {
         this.inputDevice = inputDevice;
         dPadLeft = new DPadButton(this, DPadButton.DPadButtonType.LEFT);
         dPadRight = new DPadButton(this, DPadButton.DPadButtonType.RIGHT);
         dPadUp = new DPadButton(this, DPadButton.DPadButtonType.UP);
         dPadDown = new DPadButton(this, DPadButton.DPadButtonType.DOWN);
+        this.filtered = new FilteredGamepad(this);
     }
 
-    /**
-     * Returns the current value of the x-axis of the left inputDevice. <br/>
-     * A value of {@code -1} indicates that the inputDevice is fully left.<br/>
-     * A value of {@code 1} indicates that the inputDevice is fully right.
-     *
-     * @return The current value of the x-axis of the left inputDevice.
-     */
-    protected abstract double getLeftX();
+    @Override
+    public abstract double getLeftX();
 
-    /**
-     * Returns the current value of the y-axis of the left inputDevice. <br/>
-     * A value of {@code -1} indicates that the inputDevice is fully down.<br/>
-     * A value of {@code 1} indicates that the inputDevice is fully up.
-     *
-     * @return The current value of the y-axis of the left inputDevice.
-     */
-    protected abstract double getLeftY();
+    @Override
+    public abstract double getLeftY();
 
-    /**
-     * Returns the current value of the x-axis of the right inputDevice. <br/>
-     * A value of {@code -1} indicates that the inputDevice is fully left.<br/>
-     * A value of {@code 1} indicates that the inputDevice is fully right.
-     *
-     * @return The current value of the x-axis of the right inputDevice.
-     */
-    protected abstract double getRightX();
+    @Override
+    public abstract double getRightX();
 
-    /**
-     * Returns the current value of the y-axis of the right inputDevice. <br/>
-     * A value of {@code -1} indicates that the inputDevice is fully down.<br/>
-     * A value of {@code 1} indicates that the inputDevice is fully up.
-     *
-     * @return The current value of the y-axis of the right inputDevice.
-     */
-    protected abstract double getRightY();
+    @Override
+    public abstract double getRightY();
 
     /**
      * Returns a Button object representing the left bumper of the gamepad. <br/>
@@ -232,33 +212,17 @@ public abstract class GamepadBase {
         return rightTrigger;
     }
 
-    /**
-     * Returns the state of the left inputDevice as a Vector2.
-     * This vector 2 contains the state of the x- and y- axis of the inputDevice.
-     *
-     * @return A Vector2 representing the state of the left inputDevice.
-     */
+    @Override
     public Vector2 getLeftJoystick() {
         return new Vector2(getLeftX(), getLeftY());
     }
 
-    /**
-     * Returns the state of the right inputDevice as a Vector2.
-     * This vector 2 contains the state of the x- and y- axis of the inputDevice.
-     *
-     * @return A Vector2 representing the state of the right inputDevice.
-     */
+    @Override
     public Vector2 getRightJoystick() {
         return new Vector2(getRightX(), getRightY());
     }
 
-    /**
-     * Returns the state of the gamepad's inputDevices together in a
-     * GamepadAxisState.
-     *
-     * @return A GamepadAxisState object containing the states of all the
-     * inputDevice axes on this Gamepad.
-     */
+    @Override
     public GamepadAxisState getGamepadAxisState() {
         Vector2 left = new Vector2(getLeftX(), getLeftY());
         Vector2 right = new Vector2(getRightX(), getRightY());

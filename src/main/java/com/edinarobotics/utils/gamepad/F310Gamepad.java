@@ -30,22 +30,22 @@ public class F310Gamepad extends GamepadBase {
     }
 
     @Override
-    protected double getLeftX() {
+    public double getLeftX() {
         return inputDevice.getRawAxis(0);
     }
 
     @Override
-    protected double getLeftY() {
+    public double getLeftY() {
         return -inputDevice.getRawAxis(1);
     }
 
     @Override
-    protected double getRightX() {
+    public double getRightX() {
         return inputDevice.getRawAxis(2);
     }
 
     @Override
-    protected double getRightY() {
+    public double getRightY() {
         return -inputDevice.getRawAxis(3);
     }
 }

@@ -1,6 +1,5 @@
 package com.edinarobotics.utils.gamepad.buttons;
 
-import com.edinarobotics.utils.gamepad.Gamepad;
 import com.edinarobotics.utils.gamepad.GamepadBase;
 import edu.wpi.first.wpilibj.buttons.Button;
 

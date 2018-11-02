@@ -71,4 +71,12 @@ public class XboxGamepad extends GamepadBase {
     public double getLT() {
         return inputDevice.getRawAxis(2);
     }
+
+    @Override
+    public GamepadAxisState getGamepadAxisState() {
+        return new XboxGamepadAxisState(
+                getLeftJoystick(), getRightJoystick(),
+                getLT(), getRT()
+        );
+    }
 }

@@ -2,6 +2,7 @@ package com.edinarobotics.utils.gamepad.gamepadfilters;
 
 import com.edinarobotics.utils.gamepad.GamepadAxisState;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,8 +17,15 @@ public class GamepadFilterSet implements GamepadFilter {
      * gamepad in the order in which they are positioned in the array.
      * @param filters The array of filters to be applied to the gamepad.
      */
-    public GamepadFilterSet(List<GamepadFilter> filters){
+    public GamepadFilterSet(List<GamepadFilter> filters) {
         this.filters = filters;
+    }
+
+    /**
+     * Constructs a new empty GamepadFilterSet with no filters added to the set
+     */
+    public GamepadFilterSet() {
+        this.filters = new ArrayList<>();
     }
 
     /**

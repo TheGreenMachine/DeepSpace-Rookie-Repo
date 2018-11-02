@@ -40,7 +40,7 @@ public class XboxGamepad extends GamepadBase {
         leftJoystickButton = new JoystickButton(inputDevice, 8);
         rightJoystickButton = new JoystickButton(inputDevice, 9);
 
-        leftTrigger = new AnalogButton(inputDevice, 3);
+        leftTrigger = new AnalogButton(inputDevice, 2);
         rightTrigger = new AnalogButton(inputDevice, 3);
     }
 

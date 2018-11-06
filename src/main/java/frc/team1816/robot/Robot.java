@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.team1816.robot.commands.DriveTrainCommand;
@@ -73,6 +74,8 @@ public class Robot extends TimedRobot {
 
     //@Override
     public void teleopPeriodic() {
+        Scheduler.getInstance().run();
+        System.out.println("Running");
 
     }
 

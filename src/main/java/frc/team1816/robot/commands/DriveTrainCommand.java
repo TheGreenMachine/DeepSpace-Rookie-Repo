@@ -44,12 +44,17 @@ public class DriveTrainCommand extends Command {
 //    @Override
     protected void execute() {
         double value;
-        value = joystick.getX();
+        value = joystick.getY();
 
         if (value == 1.0) {
             drivetrain.active(0.25, 0.25);
         }
-
+        else if (value == -1.0) {
+            drivetrain.active(-0.25, -0.25);
+        }
+        else {
+            drivetrain.active(0, 0);
+        }
     }
 
 

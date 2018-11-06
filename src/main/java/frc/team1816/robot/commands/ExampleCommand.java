@@ -1,10 +1,18 @@
 package frc.team1816.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.team1816.robot.Components;
+import frc.team1816.robot.subsystems.DrivetrainFRC;
 
 
 public class ExampleCommand extends Command {
+    Joystick joystick1 = new Joystick(0);
+    DrivetrainFRC drivetrain;
+
     public ExampleCommand() {
+        drivetrain = Components.getInstance().drivetrain;
+        requires(drivetrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -26,7 +34,9 @@ public class ExampleCommand extends Command {
      */
     @Override
     protected void execute() {
-
+        double x = joystick1.getX();
+        double y = joystick1.getY();
+        drivetrain.moveRobot(x, y);
     }
 
 
@@ -62,7 +72,7 @@ public class ExampleCommand extends Command {
      */
     @Override
     protected void end() {
-
+        drivetrain.moveRobot(0,0);
     }
 
 
@@ -82,6 +92,6 @@ public class ExampleCommand extends Command {
      */
     @Override
     protected void interrupted() {
-        super.interrupted();
+        end();
     }
 }

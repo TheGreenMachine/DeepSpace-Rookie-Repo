@@ -1,10 +1,14 @@
 package frc.team1816.robot;
 
+import frc.team1816.robot.subsystems.Chassis;
+
 public class Components {
     private static Components instance;
 
-    private Components(){
-        
+    public Chassis chassis;
+
+    public Components(){
+        this.chassis = new Chassis();
     }
 
     public static Components getInstance(){

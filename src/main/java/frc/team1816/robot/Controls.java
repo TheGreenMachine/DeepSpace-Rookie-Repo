@@ -1,5 +1,6 @@
 package frc.team1816.robot;
 
+import com.edinarobotics.utils.gamepad.Joystick;
 import com.edinarobotics.utils.gamepad.gamepadfilters.GamepadFilter;
 import com.edinarobotics.utils.gamepad.gamepadfilters.DeadzoneFilter;
 import com.edinarobotics.utils.gamepad.gamepadfilters.PowerFilter;
@@ -12,19 +13,15 @@ import java.util.ArrayList;
 public class Controls {
     private static Controls instance;
 
-    public Gamepad gamepad1;
-    public Gamepad gamepad2;
+    public Joystick joystick1;
+    public Joystick joystick2;
 
 
     public  Controls() {
 
-        List<GamepadFilter> gamepadFilter0 = new ArrayList<>();
-        gamepadFilter0.add(new DeadzoneFilter(0.05));
-        gamepadFilter0.add(new PowerFilter(2));
-        GamepadFilterSet driveGamepadFilterSet0 = new GamepadFilterSet(gamepadFilter0);
 
-        gamepad1 = new FilteredGamepad(0, driveGamepadFilterSet0);
-        gamepad2 = new FilteredGamepad(1, driveGamepadFilterSet0);
+        joystick1 = new Joystick(0);
+        joystick2 = new Joystick(1);
 
 
     }

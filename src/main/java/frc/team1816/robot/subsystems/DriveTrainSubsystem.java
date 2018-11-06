@@ -29,16 +29,20 @@ public class DriveTrainSubsystem extends Subsystem {
 
 
         }
-        public void setDriveTrain(double leftpower, double rightpower) {
-            this.leftpower = leftpower;
-            this.rightpower = rightpower;
-            update();
+        public void active(double speedLeft, double speedRight)  {
+
+            this.leftTalon1.set(ControlMode.PercentOutput, speedLeft);
+            this.rightTalon1.set(ControlMode.PercentOutput, speedRight);
+
+
+        }
+        public void setDriveTrain() {
+
         }
 
         public void update() {
 
-            this.leftTalon1.set(ControlMode.PercentOutput, leftpower);
-            this.rightTalon1.set(ControlMode.PercentOutput, rightpower);
+
         }
 
 

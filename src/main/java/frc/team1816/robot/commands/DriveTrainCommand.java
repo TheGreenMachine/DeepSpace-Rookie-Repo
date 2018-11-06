@@ -1,13 +1,28 @@
 package frc.team1816.robot.commands;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.edinarobotics.utils.gamepad.Joystick;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.team1816.robot.Robot;
+import com.edinarobotics.utils.gamepad.Gamepad;
+import static com.edinarobotics.utils.math.Math1816.coerceValue;
+import frc.team1816.robot.Components;
+import frc.team1816.robot.Controls;
+import frc.team1816.robot.subsystems.DriveTrainSubsystem;
 
 
 public class DriveTrainCommand extends Command {
+
+    private DriveTrainSubsystem drivetrain;
+
+    private Joystick joystick;
+
     public DriveTrainCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+
+        drivetrain = Components.getInstance().driveTrainSubsystem;
+        joystick = Controls.getInstance().joystick1;
+        requires(drivetrain);
+
 
     }
 
@@ -28,9 +43,18 @@ public class DriveTrainCommand extends Command {
      */
 //    @Override
     protected void execute() {
+        double value;
+        value = joystick.getX();
 
+        if (value == 1.0) {
+            drivetrain.active(0.25, 0.25);
+        }
 
     }
+
+
+
+
 
 
     /**

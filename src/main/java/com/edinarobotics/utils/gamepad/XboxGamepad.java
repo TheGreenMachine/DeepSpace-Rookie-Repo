@@ -25,19 +25,19 @@ public class XboxGamepad extends GamepadBase {
     public XboxGamepad(int port) {
         super(new XboxController(port));
 
-        leftBumper = new JoystickButton(inputDevice, 4);
-        rightBumper = new JoystickButton(inputDevice, 5);
+        leftBumper = new JoystickButton(inputDevice, 5);
+        rightBumper = new JoystickButton(inputDevice, 6);
 
-        buttonA = new JoystickButton(inputDevice, 0);
-        buttonB = new JoystickButton(inputDevice, 1);
-        buttonX = new JoystickButton(inputDevice, 2);
-        buttonY = new JoystickButton(inputDevice, 3);
+        buttonA = new JoystickButton(inputDevice, 1);
+        buttonB = new JoystickButton(inputDevice, 2);
+        buttonX = new JoystickButton(inputDevice, 3);
+        buttonY = new JoystickButton(inputDevice, 4);
 
-        buttonSelect = new JoystickButton(inputDevice, 6);
-        buttonStart = new JoystickButton(inputDevice, 7);
+        buttonSelect = new JoystickButton(inputDevice, 7);
+        buttonStart = new JoystickButton(inputDevice, 8);
 
-        leftJoystickButton = new JoystickButton(inputDevice, 8);
-        rightJoystickButton = new JoystickButton(inputDevice, 9);
+        leftJoystickButton = new JoystickButton(inputDevice, 9);
+        rightJoystickButton = new JoystickButton(inputDevice, 10);
 
         leftTrigger = new AnalogButton(inputDevice, 2);
         rightTrigger = new AnalogButton(inputDevice, 3);

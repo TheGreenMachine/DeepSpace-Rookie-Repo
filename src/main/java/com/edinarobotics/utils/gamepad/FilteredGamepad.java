@@ -90,20 +90,20 @@ public class FilteredGamepad implements TwoJoystickSet {
         return getRightJoystick().getY();
     }
 
-    public double getLT() throws Exception {
+    public double getLT() {
         if (getGamepadAxisState() instanceof XboxGamepadAxisState) {
             XboxGamepadAxisState xboxGamepadAxisState = (XboxGamepadAxisState) getGamepadAxisState();
             return xboxGamepadAxisState.getLeftTrigger();
         }
-        throw new Exception("Gamepad does not support analog triggers!");
+        return 0;
     }
 
-    public double getRT() throws Exception {
+    public double getRT() {
         if (getGamepadAxisState() instanceof XboxGamepadAxisState) {
             XboxGamepadAxisState xboxGamepadAxisState = (XboxGamepadAxisState) getGamepadAxisState();
             return xboxGamepadAxisState.getRightTrigger();
         }
-        throw new Exception("Gamepad does not support analog triggers!");
+        return 0;
     }
 
     public GamepadFilterSet getFilters() {

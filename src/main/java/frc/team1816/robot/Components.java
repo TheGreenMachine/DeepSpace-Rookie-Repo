@@ -5,7 +5,7 @@ import frc.team1816.robot.subsystems.DriveTrain;
 public class Components {
     private static Components instance;
 
-    private DriveTrain drivetrain;
+    public DriveTrain drivetrain;
 
     private final int LEFT_MAIN = 14;
     private final int LEFT_FOLLOW = 13;

@@ -6,7 +6,7 @@ import frc.team1816.robot.Controls;
 
 
 public class XboxTestCommand extends Command {
-    XboxGamepad gamepad;
+    private XboxGamepad gamepad;
     public XboxTestCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

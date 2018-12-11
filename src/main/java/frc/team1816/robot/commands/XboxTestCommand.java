@@ -1,15 +1,18 @@
 package frc.team1816.robot.commands;
 
 import com.edinarobotics.utils.gamepad.XboxGamepad;
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team1816.robot.Controls;
 
 
 public class XboxTestCommand extends Command {
-    private XboxGamepad gamepad;
+    private XboxController controller;
     public XboxTestCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        controller = new XboxController(0);
     }
 
 
@@ -19,7 +22,6 @@ public class XboxTestCommand extends Command {
      */
     @Override
     protected void initialize() {
-        gamepad = Controls.getInstance().xboxGamepadDriver;
     }
 
 
@@ -29,24 +31,25 @@ public class XboxTestCommand extends Command {
      */
     @Override
     protected void execute() {
-        System.out.println("Unfiltered:");
-        System.out.printf("LX: %.2f\tLY: %.2f%n", gamepad.getLeftX(), gamepad.getLeftY());
-        System.out.printf("RX: %.2f\tRY: %.2f%n", gamepad.getRightX(), gamepad.getRightY());
-        System.out.printf("LT: %.2f\tRT: %.2f%n", gamepad.getLT(), gamepad.getRT());
-        System.out.println("Filtered:");
-        System.out.printf("LX: %.2f\tLY: %.2f%n", gamepad.filtered.getLeftX(), gamepad.filtered.getLeftY());
-        System.out.printf("RX: %.2f\tRY: %.2f%n", gamepad.filtered.getRightX(), gamepad.filtered.getRightY());
-        try {
-            System.out.printf("LT: %.2f\tRT: %.2f%n", gamepad.filtered.getLT(), gamepad.filtered.getRT());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println("Buttons:");
-        System.out.printf("A: %b\tB: %b\tX: %b\tY: %b%n",
-                gamepad.buttonA().get(), gamepad.buttonB().get(),
-                gamepad.buttonX().get(), gamepad.buttonY().get()
-        );
-        System.out.printf("DPad: %d %d", gamepad.getDPadX(), gamepad.getDPadY());
+//        System.out.println("Unfiltered:");
+
+        System.out.println("Left: " + controller.getRawAxis(0) + " " + controller.getY(GenericHID.Hand.kLeft));
+//        System.out.printf("RX: %.2f\tRY: %.2f%n", gamepad.getRightX(), gamepad.getRightY());
+//        System.out.printf("LT: %.2f\tRT: %.2f%n", gamepad.getLT(), gamepad.getRT());
+//        System.out.println("Filtered:");
+//        System.out.printf("LX: %.2f\tLY: %.2f%n", gamepad.filtered.getLeftX(), gamepad.filtered.getLeftY());
+//        System.out.printf("RX: %.2f\tRY: %.2f%n", gamepad.filtered.getRightX(), gamepad.filtered.getRightY());
+//        try {
+//            System.out.printf("LT: %.2f\tRT: %.2f%n", gamepad.filtered.getLT(), gamepad.filtered.getRT());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println("Buttons:");
+//        System.out.printf("A: %b\tB: %b\tX: %b\tY: %b%n",
+//                gamepad.buttonA().get(), gamepad.buttonB().get(),
+//                gamepad.buttonX().get(), gamepad.buttonY().get()
+//        );
+//        System.out.printf("DPad: %d %d", gamepad.getDPadX(), gamepad.getDPadY());
     }
 
 
@@ -82,7 +85,7 @@ public class XboxTestCommand extends Command {
      */
     @Override
     protected void end() {
-
+        System.out.println("Finishing!");
     }
 
 
@@ -102,6 +105,8 @@ public class XboxTestCommand extends Command {
      */
     @Override
     protected void interrupted() {
-        super.interrupted();
+        System.out.println("Interrupted!");
+//        super.interrupted();
+        end();
     }
 }

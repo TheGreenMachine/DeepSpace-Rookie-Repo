@@ -2,6 +2,7 @@ plugins {
     id "java"
     id "eclipse"
     id "idea"
+    id "checkstyle"
     id "jaci.openrio.gradle.GradleRIO" version "2018.01.22"
 }
 
@@ -24,6 +25,16 @@ deploy {
             targets << "roborio"
         }
     }
+}
+
+repositories {
+    mavenCentral()
+}
+
+checkstyle {
+    toolVersion "8.15"
+
+    ignoreFailures = false
 }
 
 // Defining my dependencies. In this case, WPILib (+ friends), CTRE Phoenix (Talon SRX)

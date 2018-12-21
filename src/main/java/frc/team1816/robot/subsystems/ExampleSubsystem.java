@@ -1,6 +1,5 @@
 package frc.team1816.robot.subsystems;
 
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class ExampleSubsystem extends Subsystem {
